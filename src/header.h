@@ -7,10 +7,8 @@ using namespace std;
 
 struct player
 {
-int lives;
 int time;
 string currentLocation;
-vector<string>inventory;
 string currentgoal;
 vector<string>memoriesFound;
 string  araState;
@@ -33,7 +31,7 @@ string destinationLocation;
 string endMessage;
 
 };
-void playGame;
+void playGame();
 void sleep(int time_ms);
 int load_Locations(vector<location>& locations, const string& file);
 int load_Actions(vector<action>& actions, const string& file);
