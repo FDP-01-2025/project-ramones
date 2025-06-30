@@ -17,12 +17,7 @@ vector<string>memoriesFound;            //List of memory fragments the player ha
 string  araState;                      // Saves the current status of the relationship with ARA (NEUTRAL, HELPFUL, HOSTILE).
 bool finalModuleFound;                //It becomes 'true' when the player finds the key item at the end.
 
-int time;
-string currentLocation;
-string currentgoal;
-vector<string>memoriesFound;
-string  araState;
-bool finalModuleFound;
+
 
 
 };
