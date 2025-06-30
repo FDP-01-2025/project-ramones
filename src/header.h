@@ -7,6 +7,7 @@ using namespace std;
 
 struct player                                  //Represents all the data and current state of the player.
 {
+
 int lives;                                   //Player's remaining lives.
 int time;                                   //Time remaining in seconds.
 string currentLocation;                    //The 'id' of the location where the player is located.
@@ -15,6 +16,14 @@ string currentgoal;                      //The current objective shown to the pl
 vector<string>memoriesFound;            //List of memory fragments the player has discovered.
 string  araState;                      // Saves the current status of the relationship with ARA (NEUTRAL, HELPFUL, HOSTILE).
 bool finalModuleFound;                //It becomes 'true' when the player finds the key item at the end.
+
+int time;
+string currentLocation;
+string currentgoal;
+vector<string>memoriesFound;
+string  araState;
+bool finalModuleFound;
+
 
 };
 
@@ -33,7 +42,8 @@ string destinationLocation;        //The 'id' of the location the player will mo
 string endMessage;                //The message that is displayed when the action completes successfully.
 
 };
-void playGame;//The main function that orchestrates the entire game loop.
+
+void playGame();//The main function that orchestrates the entire game loop.
 void sleep(int time_ms);//Pauses the execution of the program for a specified time.
 int load_Locations(vector<location>& locations, const string& file);//Read location data
 int load_Actions(vector<action>& actions, const string& file);//Reads action/puzzle data from a text file.
@@ -48,4 +58,4 @@ void interact_with_Ara(player);//Manage dialogue and key decisions with the char
 void handle_final_choice(player);//Manages the sequence of end-game decisions.
 void show_final_ending(const player);//Displays the final text corresponding to the decision made.
 void show_credits();//Displays the game's ending credits.
-void final_game();
+
