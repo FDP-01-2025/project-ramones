@@ -1,5 +1,38 @@
+
 #include "header.h"
 #include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+using namespace std;
+
+struct player
+{
+     int time;
+    string currentLocation;
+    string currentgoal;
+    vector<string> memoriesFound;
+    string araState;
+    bool finalModuleFound;
+};
+    struct location
+    {
+        string locations;
+        string description;
+        bool isHostile;
+    };
+
+        struct action
+        {
+            string sourceLocation;
+            string entry;
+            string destinationLocation;
+            string endMessage;
+        };
+        
+    
+
 
 void playGame()
 {
@@ -19,11 +52,57 @@ void sleep(int time_seconds) //this works for the time, every action that the pl
 
 int load_Locations(vector<location> &locations, const string &file, player &player)
 {
+     ifstream inFile(file);
+    if (!inFile.is_open()) {
+        cerr << "Error al abrir archivo: " << file << endl;
+        return 1;
+    }
+         string line;
+    while (getline(inFile, line)) {
+        stringstream ss(line);
+        location loc;
+        string hostile;
+
+        getline(ss, loc.locations, '|');
+        getline(ss, loc.description, '|');
+        getline(ss, hostile, '|');
+        loc.isHostile = (hostile == "1");
+
+        locations.push_back(loc);
+    }
+
+    inFile.close();
+
+    // Ubicación inicial
+    if (!locations.empty()) {
+        player.currentLocation = locations[0].locations;
+    }
+
     return 0;
 }
 
 int load_Actions(vector<action> &actions, const string &file)
 {
+     ifstream inFile(file); // Abrir archivo
+    if (!inFile.is_open()) {
+        cerr << "Error al abrir el archivo: " << file << endl;
+        return 1; // código de error
+    }
+
+    string line;
+    while (getline(inFile, line)) {
+        stringstream ss(line);
+        action act;
+
+        getline(ss, act.sourceLocation, '|');     
+        getline(ss, act.entry, '|');               
+        getline(ss, act.destinationLocation, '|'); 
+        getline(ss, act.endMessage, '|');          
+
+        actions.push_back(act);                  
+    }
+
+    inFile.close();
 return 0;
 }
 
