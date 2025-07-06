@@ -33,8 +33,8 @@ struct player
         
 void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
 {
-    time_seconds=900;
-    if (time_seconds >=900)
+    time_seconds=450;
+    if (time_seconds >=450)
     {
         cout<< "Se te acabo el tiempo. El reator ha explotado." << endl;
         cout << "=====GAME OVER=====" << endl << endl;
@@ -152,7 +152,7 @@ void process_Action(string &entry, player player, vector<action> actions, const 
         {
             cout<< action.endMessage << endl;
             player.currentLocation =  action.destinationLocation;
-            player.time -= 10;
+            player.time -= 15;
                 if (player.currentLocation == "Laboratorio de experimentos") {
                 string memoria = "Memoria del experimento";
                 discover_memory(player, memoria);
@@ -176,7 +176,7 @@ void process_Action(string &entry, player player, vector<action> actions, const 
         if (!actionFound)
         {
             cout << "No puedes hacer eso aqui..." << endl;
-            player.time -= 10;
+            player.time -= 20;
         }
         
     }
