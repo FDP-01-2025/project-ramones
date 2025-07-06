@@ -61,8 +61,9 @@ Modularizacion: La separacion de archivos .h y .cpp para que el codigo presentar
 Plataforma compatible: Windows, Linux y Mac( necesita ajustes para el clearConsole() )
 
 ## Imagenes del juego
-Imagen preliminar del juego
+Imagenes preliminares del juego
 ![alt text](image.png)
+![alt text](image-1.png)
 
 ## Equipo
 
