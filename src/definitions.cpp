@@ -31,13 +31,6 @@ struct player
             string endMessage;
         };
         
-    
-
-
-void playGame()
-{
-}
-
 void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
 {
     time_seconds=900;

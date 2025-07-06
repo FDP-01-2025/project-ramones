@@ -51,6 +51,7 @@ while (player.time > 0 && !player.finalModuleFound)
 Se lee informacion que se encuentra en archivos .txt para cargar ubicaciones y acciones que el jugador realiza:
 
 ifstream file("locations.txt");
+
 ifstream file("actions.txt");
 
 ## Consideraciones Tecnicas
