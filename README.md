@@ -3,6 +3,9 @@
 
 ## Descripción del Proyecto
 
+La historia, titulada "ECOS", es una aventura de ciencia ficción y misterio con una duración estimada de 15 minutos de juego o narración. Despiertas en KALYX-9, una estación subterránea en caos. Alarmas, luces rojas y una advertencia: el reactor explotará en 15 minutos. No recuerdas nada. Saliste de una cámara criogénica rota, rodeado de sangre y signos de pelea. Algo salió muy mal… y apenas estás empezando.
+
+## Tematica y ambientación
 Ecos es una historia interactiva acerca de la identidad y la conciencia de uno mismo, así como de las
 implicaciones éticas de la tecnología: la aventura. Situado en un mundo claustrofóbico y un futuro
 distópico y las máquinas de un desastre venidero que se encuentra a la vuelta de la
@@ -14,6 +17,52 @@ con rapidez. Los momentos en los que se revela el enigma entretejido del pasado 
 entrelazan con el tiempo dedicado a explorar y tomar decisiones. La IA de ARA es tanto una abrumadora
 guía a seguir como un enigma: a veces ARA es precisa y útil, y a veces miente o lleva mal al jugador,
 planteando la cuestión de quién es y cuáles son sus intenciones
+
+## Aplicación de los temas vistos
+
+### 1. *Estructuras
+Se usaron para definir entidades o caracteristicas dentro del juego:
+struct player 
+    int time;
+    string currentLocation;
+    string currentgoal;
+    vector<string> memoriesFound;
+    string araState;
+    bool finalModuleFound;
+
+### 2. *Vectores
+Para almacenar listas dinámicas como ubicaciones, acciones y memorias:
+vector<location> locations;
+vector<action> actions;
+
+### 3. **Funciones
+Cada parte del juego esta modularizado por medio de funciones para facilitar su realizacion:
+void playGame();
+void show_Scene(player& player, const vector<location>& locations);
+
+### 4. **Condicionales y bucles
+Se usan para controlar el flujo de decisiones y final del juego:
+
+while (player.time > 0 && !player.finalModuleFound) 
+    string entrada = handle_Entry();
+    process_Action(entrada, player, actions, locations)
+
+### 5. **Lectura desde los archivos
+Se lee informacion que se encuentra en archivos .txt para cargar ubicaciones y acciones que el jugador realiza:
+
+ifstream file("locations.txt");
+ifstream file("actions.txt");
+
+## Consideraciones Tecnicas
+Lenguaje: C++
+Compilador: g++
+Arquitectura: Basado en consola y no posee uso de graficos
+Modularizacion: La separacion de archivos .h y .cpp para que el codigo presentara una mejor organizacion
+Plataforma compatible: Windows, Linux y Mac( necesita ajustes para el clearConsole() )
+
+## Imagenes del juego
+Imagen preliminar del juego
+![alt text](image.png)
 
 ## Equipo
 
