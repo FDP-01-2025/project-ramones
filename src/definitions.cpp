@@ -44,7 +44,8 @@ void sleep(int time_seconds) //this works for the time, every action that the pl
     if (time_seconds >=900)
     {
         cout<< "Se te acabo el tiempo. El reator ha explotado." << endl;
-        cout << "=====GAME OVER=====" << endl;
+        cout << "=====GAME OVER=====" << endl << endl;
+        cout << "                                                                        !!!!!AJAJAJAJAJAJAJA" << endl;
         
     }
     

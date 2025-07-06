@@ -1,3 +1,5 @@
+#ifndef HEADER_H
+#define HEADER_H
 #include <iostream>
 #include <string>
 #include <vector>
@@ -37,12 +39,12 @@ string endMessage;
 
 void playGame();                        //the main function that orchestrates the entire game loop.
 void sleep(int time_seconds);                            //pauses the execution of the program for a specified time.
-int load_Locations(vector<location>& locations, const string& file, player &player);                //read location data
+int load_Locations(vector<location>& locations, const string& file, player& player);                //read location data
 int load_Actions(vector<action>& actions, const string& file);          //reads action/puzzle data from a text file.
-void initialize_player(player & player);                //sets the player's initial values ​​at the start of a game.
-void show_Scene(player & player , const vector<location>& locations);               //displays the description of the player's current location and status.
+void initialize_player(player& player);                //sets the player's initial values ​​at the start of a game.
+void show_Scene(const player& player , const vector<location>& locations);               //displays the description of the player's current location and status.
 string handle_Entry();                  //captures and returns the command the player types.
-void process_Action(string & entry, player, vector<action> actions,const vector<location>& locations);        //processes the player's command and updates the game state.
+void process_Action(string &entry, player player, vector<action> actions, const vector<location> &locations) ;     //processes the player's command and updates the game state.
 bool verify_EndConditions(player);          //checks if the player has lost or won.
 void discover_memory(player&player, string & memory);       //mandles the event of finding a new memory fragment.
 void interact_with_Ara(player);         //manage dialogue and key decisions with the character ARA.
@@ -50,3 +52,4 @@ void handle_final_choice(player);           //manages the sequence of end-game d
 void show_final_ending(const player);           //displays the final text corresponding to the decision made.
 void show_credits();                    //displays the game's ending credits.
 void final_game();                              //displays the final message after the credits
+#endif
