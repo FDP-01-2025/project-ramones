@@ -74,13 +74,10 @@ Imagenes preliminares del juego
 1. **Nombre completo:** [Alejandro Jose Ayala Pleitez]
    **Carnet:** [00237625]
 
-2. **Nombre completo:** [Oscar Armando Flores Hernandez]  
-   **Carnet:** [00119425]
-
-3. **Nombre completo:** [Julio Ernesto Alvarez Parada]  
+2. **Nombre completo:** [Julio Ernesto Alvarez Parada]  
    **Carnet:** [00245425]
 
-4. **Nombre completo:** [Wilmer Daniel Cabezas Bellozo]  
+3. **Nombre completo:** [Wilmer Daniel Cabezas Bellozo]  
    **Carnet:** [00024625]
 
 
