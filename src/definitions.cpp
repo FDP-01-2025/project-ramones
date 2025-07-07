@@ -110,29 +110,28 @@ void initialize_player(player &player)  //basic features of the player, time, lo
     player.finalModuleFound= false;
 }
 
-void show_Scene(player &player, const vector<location> &locations)  //shows the current scene or location of the player, it depends on the history.
+void show_Scene(player &player, const vector<location> &locations)
 {
     cout << "Tiempo restante: " << player.time << endl;
+
     for (const auto &loc : locations)
     {
-        if (loc.locations==player.currentLocation)
+        if (loc.locations == player.currentLocation)
         {
-            cout<< "Estas en: " << loc.locations << endl;
-            cout<< loc.description<< endl;
+            cout << "Estas en: " << loc.locations << endl;
+            cout << loc.description << endl;
             if (loc.isHostile)
-            {
-                cout<< "Este lugar es hostil!..." << endl;
-                cout << "Ten cuidado!" << endl;
-                final_game();
-            }
-            
-        }return;
-        
-    }
-    
-    cout << "Ubicacion desconocida..." << endl;
-    
+{
+    cout << "Este lugar es hostil... algo se mueve entre las sombras." << endl;
 }
+
+            return;
+        }
+    }
+
+    cout << "Ubicacion desconocida..." << endl;
+}
+
 
 string handle_Entry() // it reads the decitions that the the player is gonna take throughout the game
 {
@@ -143,7 +142,7 @@ string handle_Entry() // it reads the decitions that the the player is gonna tak
     return string(input);
 }
 
-void process_Action(string &entry, player player, vector<action> actions, const vector<location> &locations) 
+void process_Action(string &entry, player &player, vector<action> actions, const vector<location> &locations) 
 {// it simply process the action of the player, it reads if it fits on the ".txt" and show the message that corresponds to the action.
     bool actionFound = false;
     for (auto &action :actions)
