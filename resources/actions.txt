@@ -1,3 +1,7 @@
-Start|ir al laboratorio|Laboratorio de experimentos|Te diriges al laboratorio, el lugar es silencioso...
-Laboratorio de experimentos|usar computadora|Observatorio estelar|La computadora se enciende y una compuerta se abre...
-Observatorio estelar|activar modulo|Modulo Final|Una voz te guía al módulo final. Sientes que algo cambiará...
+
+Start|avanzar|Pasillo oscuro|Avanzas con cautela por el pasillo.
+Pasillo oscuro|abrir puerta oxidada|Laboratorio tétrico|Fuerzas la puerta... el laboratorio está hecho un caos.
+Laboratorio tétrico|mirar alrededor|Laboratorio tétrico|Ves instrumentos rotos y manchas oscuras. Algo se mueve.
+Laboratorio tétrico|gritar|Laboratorio tétrico|Tu grito resuena... y algo te responde desde la oscuridad.
+Laboratorio tétrico|esconderse|Laboratorio tétrico|Te agachas detrás de una consola destrozada.
+Laboratorio tétrico|enfrentar criatura|Laboratorio tétrico|Empuñas una herramienta oxidada y te preparas... ¿para que?
