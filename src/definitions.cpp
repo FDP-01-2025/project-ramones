@@ -120,10 +120,41 @@ void show_Scene(player &player, const vector<location> &locations)
         {
             cout << "Estas en: " << loc.locations << endl;
             cout << loc.description << endl;
+
             if (loc.isHostile)
-{
-    cout << "Este lugar es hostil... algo se mueve entre las sombras." << endl;
-}
+            {
+                cout << "Este lugar es hostil... algo se mueve entre las sombras." << endl;
+
+                if (player.araState == "Desactivada")
+                {
+                    cout << "\nSin ARA activa, dependes solo de tu instinto..." << endl;
+                    cout << "\n Que haces?\n";
+                    cout << "1. Te escondes detrás de una consola.\n";
+                    cout << "2. Enfrentas el ruido con una herramienta que encontraste.\n";
+                    string decision;
+                    getline(cin, decision);
+
+                    if (decision == "1")
+                    {
+                        cout << "\nEsperas en silencio mientras una figura monstruosa pasa de largo..." << endl;
+                        cout << "Has sobrevivido... por ahora." << endl;
+                    }
+                    else if (decision == "2")
+                    {
+                        cout << "\nSaltas hacia la figura, pero eres superado con facilidad..." << endl;
+                        cout << "No logras sobrevivir al encuentro." << endl;
+                        cout << "===== GAME OVER =====" << endl;
+                        exit(0);
+                    }
+                    else
+                    {
+                        cout << "\nDudaste demasiado... y eso fue tu final." << endl;
+                        cout << "===== GAME OVER =====" << endl;
+                        exit(0);
+                    }
+                }
+                
+            }
 
             return;
         }
