@@ -103,7 +103,7 @@ return 0;
 
 void initialize_player(player &player)  //basic features of the player, time, location, goals, etc.
 {
-    player.time=10;
+    player.time=450;
     player.currentLocation="Start";
     player.currentgoal= "Encuentra modulos de memoria";
     player.memoriesFound={};
@@ -111,21 +111,6 @@ void initialize_player(player &player)  //basic features of the player, time, lo
     player.finalModuleFound= false;
 }
 
-void showArt(const std::string& archivo)
-{
-    ifstream inFile(archivo);
-        if (!inFile.is_open()) {
-            cerr << "No se pudo abrir el archivo: " << archivo << endl;
-            return;
-        }
-
-        string line;
-        while (getline(inFile, line)) {
-            cout << line << endl;
-        }
-
-    inFile.close();
-}
 
 void show_Scene(player &player, const vector<location> &locations)
 {
@@ -162,12 +147,14 @@ void show_Scene(player &player, const vector<location> &locations)
                         cout << "\nSaltas hacia la figura, pero eres superado con facilidad..." << endl;
                         cout << "No logras sobrevivir al encuentro." << endl;
                         cout << "===== GAME OVER =====" << endl;
+                        showArt("assets/ascii-art.txt");
                         exit(0);
                     }
                     else
                     {
                         cout << "\nDudaste demasiado... y eso fue tu final." << endl;
                         cout << "===== GAME OVER =====" << endl;
+                        showArt("assets/ascii-art.txt");
                         exit(0);
                     }
                 }

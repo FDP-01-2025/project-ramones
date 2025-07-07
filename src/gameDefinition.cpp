@@ -12,10 +12,6 @@ void playGame(){
     string locationsFile= "locations.txt";
     string actionsFile= "actions.txt";
 
-    showArt("assets/ECOS-art.txt");
-    cout << endl << "Presiona ENTER para empezar tu aventura...." << endl;
-    cin.ignore();
-    
      if (load_Locations(locations, locationsFile, player)==0) //to load locations
      {
         cout << "Fallo al cargar la ubicacion." << endl;
@@ -59,4 +55,5 @@ show_Scene(player, locations);
     final_game();
     show_credits();   
     cout << endl << "Gracias por jugar...Hasta la proxima" << endl;    
+}
 }
