@@ -23,12 +23,12 @@ struct player   // Esta struct representa al jugador
         bool isHostile;     //Indica si el lugar es hostil
     };
 
-        struct action
+        struct action       //Representa una accion que el jugador puede hacer
         {
-            string sourceLocation;
-            string entry;
-            string destinationLocation;
-            string endMessage;
+            string sourceLocation;      //Donde se puede ejecutar la accion
+            string entry;       //El texto que el jugador debe escribir
+            string destinationLocation;         //A donde lleva esa accion
+            string endMessage;      //Mensaje mostrado al ejecutar la accion
         };
         
 void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
