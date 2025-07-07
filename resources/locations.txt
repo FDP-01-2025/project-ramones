@@ -1,3 +1,7 @@
-Start|ir al laboratorio|Laboratorio de experimentos|Te diriges al laboratorio, el lugar es silencioso...
-Laboratorio de experimentos|usar computadora|Observatorio estelar|La computadora se enciende y una compuerta se abre...
-Observatorio estelar|activar modulo|Modulo Final|Una voz te guía al módulo final. Sientes que algo cambiará...
+Start|Te despiertas en una sala iluminada solo por luces de emergencia.|0
+Pasillo oscuro|Un largo pasillo con cables colgando y olor a quemado. A lo lejos, una puerta oxidada.|0
+Laboratorio tétrico|Equipos destruidos, sangre seca en las paredes. Algo se mueve entre las sombras.|1
+Cuarto de control|Una pequeña sala con monitores encendidos y una terminal que parece funcional.|0
+Laboratorio de experimentos|Frascos rotos, informes esparcidos. Un lugar importante para el proyecto.|0
+Observatorio estelar|Una enorme cúpula con vista a las estrellas. Sientes una extraña nostalgia.|0
+Modulo Final|Una sala blanca con un único pedestal iluminado. Sientes que estás cerca del final.|0
