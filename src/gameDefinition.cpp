@@ -11,6 +11,10 @@ void playGame(){
 
     string locationsFile= "locations.txt";
     string actionsFile= "actions.txt";
+
+    showArt("assets/ECOS-art.txt");
+    cout << endl << "Presiona ENTER para empezar tu aventura...." << endl;
+    cin.ignore();
     
      if (load_Locations(locations, locationsFile, player)==0) //to load locations
      {
@@ -36,10 +40,23 @@ show_Scene(player, locations);
                     handle_final_choice(player);
                     break;
                 }
-                
+                if (player.time <= 0) {
+                    cout << endl<<"Tu tiempo se ha agotado... el reactor ha explotado." << endl;
+                    showArt("assets/ascii-art.txt"); // show game over
+                    return;
             }
         
     show_final_ending(player); // at the end of the game, show the following credits and ending
+    if (player.memoriesFound.size() >=3 && player.time >0)
+    {
+        showArt("assets/missioncompleted-art.txt");
+    }        else if (player.time<=0)
+        {
+            showArt("assets/ascii-art.txt");
+        }
+        
+    
     final_game();
-    show_credits();       
+    show_credits();   
+    cout << endl << "Gracias por jugar...Hasta la proxima" << endl;    
 }

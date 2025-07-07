@@ -7,29 +7,30 @@
 #include <sstream>
 using namespace std;
 
-struct player   // Esta struct representa al jugador 
+struct player   // struct of the player
 {
-     int time;      // Tiempo restante para completar el juego
-    string currentLocation;              //Esta es la ubicacion actual del jugador
-    string currentgoal;     //El objetivo actual del jugador
-    vector<string> memoriesFound; // Estas son las memorias encontradas por el jugador
-    string araState;        // Indica el estado de Ara
-    bool finalModuleFound;      //Esto es para indicar si el jugador encontro el modulo final
-};
-    struct location     // Esto representa una ubicacion
+     int time;      // left time to complete the game
+    string currentLocation;              //current location of the player
+    string currentgoal;     //current objective of the player
+    vector<string> memoriesFound; // account of memory modules found
+    string araState;        // indicates the state of ara
+    bool finalModuleFound;      //it indicates if the player found de finale module
+    struct location     // represents a location
+
     {
-        string locations;       // El nombre de la ubicacion
-        string description;     // Una pequeña descripcion narrativa
-        bool isHostile;     //Indica si el lugar es hostil
+        string locations;       // name of the location
+        string description;     // narrative description
+        bool isHostile;     //indicates if its a jeopardy place
     };
 
-        struct action       //Representa una accion que el jugador puede hacer
+        struct action       //actions tha the player can do
         {
-            string sourceLocation;      //Donde se puede ejecutar la accion
-            string entry;       //El texto que el jugador debe escribir
-            string destinationLocation;         //A donde lleva esa accion
-            string endMessage;      //Mensaje mostrado al ejecutar la accion
+            string sourceLocation;      //where the action can be done
+            string entry;       //the text that the player must write
+            string destinationLocation;         //where this action takes 
+            string endMessage;      //message that shows up when the action is done
         };
+};
         
 void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
 {
@@ -77,10 +78,10 @@ int load_Locations(vector<location> &locations, const string &file, player &play
 
 int load_Actions(vector<action> &actions, const string &file)
 {
-     ifstream inFile(file); // Abrir archivo
+     ifstream inFile(file); // open file
     if (!inFile.is_open()) {
         cerr << "Error al abrir el archivo: " << file << endl;
-        return 1; // código de error
+        return 1; // error code
     }
 
     string line;
@@ -110,6 +111,22 @@ void initialize_player(player &player)  //basic features of the player, time, lo
     player.finalModuleFound= false;
 }
 
+void showArt(const std::string& archivo)
+{
+    ifstream inFile(archivo);
+        if (!inFile.is_open()) {
+            cerr << "No se pudo abrir el archivo: " << archivo << endl;
+            return;
+        }
+
+        string line;
+        while (getline(inFile, line)) {
+            cout << line << endl;
+        }
+
+    inFile.close();
+}
+
 void show_Scene(player &player, const vector<location> &locations)
 {
     cout << "Tiempo restante: " << player.time << endl;
@@ -127,10 +144,11 @@ void show_Scene(player &player, const vector<location> &locations)
 
                 if (player.araState == "Desactivada")
                 {
+                    ("assets/anciente_healer.txt");
                     cout << "\nSin ARA activa, dependes solo de tu instinto..." << endl;
-                    cout << "\n Que haces?\n";
-                    cout << "1. Te escondes detrás de una consola.\n";
-                    cout << "2. Enfrentas el ruido con una herramienta que encontraste.\n";
+                    cout << "\n Que haces?"<< endl;
+                    cout << "1. Te escondes detrás de una consola."<<endl;
+                    cout << "2. Enfrentas el ruido con una herramienta que encontraste."<< endl;
                     string decision;
                     getline(cin, decision);
 
@@ -267,7 +285,7 @@ void handle_final_choice(player &player) // based a final cout depending on the 
 }
 void show_final_ending(const player player) // couts(texts) for the different endings onf the game.
 {
- if (player.time >=900)
+ if (player.time <=0)
  {
     cout << "Tu tiempo se ha agotado. No pudiste evitar la explosion... muchas vidas y conocimiento se han perdido." << endl;
     cout << player.currentgoal << "Ha sido un fracaso!!" << endl;
@@ -287,6 +305,29 @@ void final_game() // final message after complete the game( any ending)
 }
 void show_credits() // credits of the developers of this game.
 {
-    cout << "==========CREDITOS============" << endl;
-    cout << "" << endl;
+    cout << endl;
+    cout << "==================================================" << endl;
+    cout << "                  C R É D I T O S                " << endl;
+    cout << "==================================================" << endl;
+    cout << endl;
+
+    cout << " ▸ Nombre del juego:        ECOS" << endl;
+    cout << " ▸ Historia:                JULIO PARADA" << endl;
+    cout << " ▸ Programación:            RAMones" << endl;
+    cout << " ▸ Arte ASCII:              ALEJANDRO AYALA, WILMER CABEZAS  y ASCIIFLOW" << endl;
+    cout << " ▸ Motor de juego:          Consola C++ personalizada" << endl;
+    cout << " ▸ Herramientas:            Visual Studio Code / g++" << endl;
+    cout << " ▸ Pruebas y QA:            Visual Studio Code" << endl;
+    cout << " ▸ Inspiración:             Warframe, SOMA, Dead Space y Undertale." << endl;
+    cout << endl;
+
+    cout << " ▸ Licencia y derechos:" << endl;
+    cout << "   Este juego es un proyecto personal y no tiene fines comerciales." << endl;
+    cout << "   Todos los derechos de referencias e inspiración pertenecen a sus creadores originales." << endl;
+    cout << endl;
+
+    cout << "==================================================" << endl;
+    cout << "           ¡Gracias por jugar! Hasta pronto.     " << endl;
+    cout << "==================================================" << endl;
+    cout << endl;
 }

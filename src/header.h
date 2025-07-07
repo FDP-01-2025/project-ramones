@@ -42,6 +42,7 @@ void sleep(int time_seconds);                            //pauses the execution 
 int load_Locations(vector<location>& locations, const string& file, player& player);                //read location data
 int load_Actions(vector<action>& actions, const string& file);          //reads action/puzzle data from a text file.
 void initialize_player(player& player);                //sets the player's initial values ​​at the start of a game.
+void showArt(const std::string& archivo);
 void show_Scene(const player& player , const vector<location>& locations);               //displays the description of the player's current location and status.
 string handle_Entry();                  //captures and returns the command the player types.
 void process_Action(string &entry, player player, vector<action> actions, const vector<location> &locations) ;     //processes the player's command and updates the game state.
