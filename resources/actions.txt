@@ -1,7 +1,11 @@
-
 Start|avanzar|Pasillo oscuro|Avanzas con cautela por el pasillo.
 Pasillo oscuro|abrir puerta oxidada|Laboratorio tétrico|Fuerzas la puerta... el laboratorio está hecho un caos.
+Pasillo oscuro|entrar al cuarto lateral|Cuarto de control|Entras a una pequeña sala de control.
+Cuarto de control|volver|Pasillo oscuro|Regresas al pasillo oscuro.
 Laboratorio tétrico|mirar alrededor|Laboratorio tétrico|Ves instrumentos rotos y manchas oscuras. Algo se mueve.
 Laboratorio tétrico|gritar|Laboratorio tétrico|Tu grito resuena... y algo te responde desde la oscuridad.
 Laboratorio tétrico|esconderse|Laboratorio tétrico|Te agachas detrás de una consola destrozada.
-Laboratorio tétrico|enfrentar criatura|Laboratorio tétrico|Empuñas una herramienta oxidada y te preparas... ¿para que?
+Laboratorio tétrico|enfrentar criatura|Laboratorio tétrico|Empuñas una herramienta oxidada y te preparas... ¿para qué?
+Cuarto de control|avanzar|Laboratorio de experimentos|Sigues el pasillo que conecta con el laboratorio principal.
+Laboratorio de experimentos|continuar|Observatorio estelar|Encuentras una puerta de acceso lateral.
+Observatorio estelar|subir escaleras|Modulo Final|Subes con decisión. Llegaste al destino final.
