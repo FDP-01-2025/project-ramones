@@ -7,20 +7,20 @@
 #include <sstream>
 using namespace std;
 
-struct player
+struct player   // Esta struct representa al jugador 
 {
-     int time;
-    string currentLocation;
-    string currentgoal;
-    vector<string> memoriesFound;
-    string araState;
-    bool finalModuleFound;
+     int time;      // Tiempo restante para completar el juego
+    string currentLocation;              //Esta es la ubicacion actual del jugador
+    string currentgoal;     //El objetivo actual del jugador
+    vector<string> memoriesFound; // Estas son las memorias encontradas por el jugador
+    string araState;        // Indica el estado de Ara
+    bool finalModuleFound;      //Esto es para indicar si el jugador encontro el modulo final
 };
-    struct location
+    struct location     // Esto representa una ubicacion
     {
-        string locations;
-        string description;
-        bool isHostile;
+        string locations;       // El nombre de la ubicacion
+        string description;     // Una pequeña descripcion narrativa
+        bool isHostile;     //Indica si el lugar es hostil
     };
 
         struct action
