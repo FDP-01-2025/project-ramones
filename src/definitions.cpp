@@ -153,7 +153,10 @@ void show_Scene(player &player, const vector<location> &locations)
                         exit(0);
                     }
                 }
-                
+                else
+                 {
+                    cout << "ARA analiza el entorno y activa una defensa automática. Has evitado el peligro." << endl;
+                }
             }
 
             return;
