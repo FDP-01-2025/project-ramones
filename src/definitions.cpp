@@ -7,31 +7,7 @@
 #include <sstream>
 using namespace std;
 
-struct player   // struct of the player
-{
-     int time;      // left time to complete the game
-    string currentLocation;              //current location of the player
-    string currentgoal;     //current objective of the player
-    vector<string> memoriesFound; // account of memory modules found
-    string araState;        // indicates the state of ara
-    bool finalModuleFound;      //it indicates if the player found de finale module
-    struct location     // represents a location
-
-    {
-        string locations;       // name of the location
-        string description;     // narrative description
-        bool isHostile;     //indicates if its a jeopardy place
-    };
-
-        struct action       //actions tha the player can do
-        {
-            string sourceLocation;      //where the action can be done
-            string entry;       //the text that the player must write
-            string destinationLocation;         //where this action takes 
-            string endMessage;      //message that shows up when the action is done
-        };
-};
-        
+  
 void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
 {
     time_seconds=450;
@@ -112,7 +88,7 @@ void initialize_player(player &player)  //basic features of the player, time, lo
 }
 
 
-void show_Scene(player &player, const vector<location> &locations)
+void show_Scene(const player &player, const vector<location> &locations)
 {
     cout << "Tiempo restante: " << player.time << endl;
 
@@ -181,7 +157,7 @@ string handle_Entry() // it reads the decitions that the the player is gonna tak
     return string(input);
 }
 
-void process_Action(string &entry, player &player, vector<action> actions, const vector<location> &locations) 
+void process_Action(string &entry, player &player, const vector<action> &actions, const vector<location> &locations) 
 {// it simply process the action of the player, it reads if it fits on the ".txt" and show the message that corresponds to the action.
     bool actionFound = false;
     for (auto &action :actions)
@@ -220,10 +196,11 @@ void process_Action(string &entry, player &player, vector<action> actions, const
     }
     cout << "No se puede hacer eso aqui. Intenta otra vez." << endl;
 }
-bool verify_EndConditions(player &player) //checks the conditions of the players and based them on a final of the game.
+bool verify_EndConditions(const player &player) //checks the conditions of the players and based them on a final of the game.
 {
     return player.memoriesFound.size() >= 3 && player.time > 0;
 }
+
 void discover_memory(player&player, string & memory) // just shows the update of the account of modules of memories that the player has, and it tells to the player every time it found a module.
 {
     player.memoriesFound.push_back(memory);
