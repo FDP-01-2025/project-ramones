@@ -1,10 +1,10 @@
-Start|Te despiertas en una sala iluminada solo por luces de emergencia.|0
-Pasillo oscuro|Un pasillo largo, oscuro y silencioso.|0
-Laboratorio tetrico|Instrumentos rotos y manchas oscuras por todas partes.|0
-Sala oscura| Es una criatura! Estas en peligro!.|1
-Cuarto de control|Una pequena sala con pantallas apagadas.|0
-Laboratorio de experimentos|Ecos de antiguos experimentos.|0
-Observatorio estelar|Estrellas visibles a traves de un domo quebrado.|0
-Pasillo estrellado|Mientras caminas, las estrellas que observas se vuelven cada vez mas hermosas.|0
-Observatorio abandonado|Aunque el pasar de los años es notable en la estructura del edifico, es innegable que desprende un aura de misterio....|0
-Modulo Final|Has llegado al modulo final.|0
+Incubation room|You wake up in a room lit only by emergency lights.|0
+Dark hallway|A long, dark, and silent hallway.|0
+Creepy lab|Broken instruments and dark stains everywhere.|0
+Dark room|It is a creature! You are in danger!|1
+Control room|A small room with powered-off screens.|0
+Experiment lab|Echoes of ancient experiments.|0
+Star observatory|Stars visible through a cracked dome.|0
+Starry hallway|As you walk, the stars you see become more and more beautiful.|0
+Abandoned observatory|Although the passing of the years is evident in the building’s structure, it undeniably gives off a mysterious aura...|0
+Final module|You have reached the final module.|0

@@ -10,37 +10,37 @@ void showAndChooseAction(vector<action>& actions, player& player, const vector<l
     // Show current location description
     for (const auto& loc : locations) {
         if (loc.locations == player.currentLocation) {
-            cout << "\nEstas en: " << loc.locations << endl;
+            cout << "\nYou are in: " << loc.locations << endl;
             cout << loc.description << endl;
             break;
         }
     }
 
-     // Filter available actions
-    vector<action> disponibles;
+    // Filter available actions
+    vector<action> available;
     for (const auto& act : actions) {
         if (act.sourceLocation == player.currentLocation) {
-            disponibles.push_back(act);
+            available.push_back(act);
         }
     }
 
-    if (disponibles.empty()) {
-        cout << "No hay acciones disponibles aquí." << endl;
+    if (available.empty()) {
+        cout << "There are no available actions here." << endl;
         return;
     }
 
-    // Show Menu
-    cout << "\nQue accion vas a tomar?" << endl;
-    for (size_t i = 0; i < disponibles.size(); ++i) {
-        cout << i + 1 << ". " << disponibles[i].entry << endl;
+    // Show menu
+    cout << "\nWhat action will you take?" << endl;
+    for (size_t i = 0; i < available.size(); ++i) {
+        cout << i + 1 << ". " << available[i].entry << endl;
     }
 
-    // Read entrance
-    int eleccion = 0;
+    // Read choice
+    int choice = 0;
     while (true) {
-        cout << "Ingresa el numero de la accion: ";
-        if (!(cin >> eleccion) || eleccion < 1 || eleccion > (int)disponibles.size()) {
-            cout << "Opcion invalida. Intenta otra vez." << endl;
+        cout << "Enter the number of the action: ";
+        if (!(cin >> choice) || choice < 1 || choice > (int)available.size()) {
+            cout << "Invalid option. Try again." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else {
@@ -49,12 +49,12 @@ void showAndChooseAction(vector<action>& actions, player& player, const vector<l
         }
     }
 
-    // this process the action that the player choose
-    string entrada = disponibles[eleccion - 1].entry;
-    process_Action(entrada, player, actions, locations);
+    // Process the chosen action
+    string input = available[choice - 1].entry;
+    process_Action(input, player, actions, locations);
 }
 
-// Main function of the game
+// Main game function
 void playGame() {
     vector<location> locations;
     vector<action> actions;
@@ -64,12 +64,12 @@ void playGame() {
     string actionsFile = "actions.txt";
 
     if (load_Locations(locations, locationsFile, player) != 0) {
-        cout << "Fallo al cargar la ubicación." << endl;
+        cout << "Failed to load location data." << endl;
         return;
     }
 
     if (load_Actions(actions, actionsFile) != 0) {
-        cout << "Error al cargar las acciones." << endl;
+        cout << "Failed to load action data." << endl;
         return;
     }
 
@@ -87,7 +87,7 @@ void playGame() {
         }
 
         if (player.time <= 0) {
-            cout << "\nTu tiempo se ha agotado... el reactor ha explotado." << endl;
+            cout << "\nYour time is up... the reactor has exploded." << endl;
             showArt("assets/ascii-art.txt");
             return;
         }
@@ -103,5 +103,5 @@ void playGame() {
 
     final_game();
     show_credits();
-    cout << endl << "Gracias por jugar... Hasta la proxima" << endl;
+    cout << endl << "Thank you for playing... See you next time." << endl;
 }

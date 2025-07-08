@@ -3,31 +3,28 @@
 #include <fstream>
 #include <sstream>
 
-void showArt(const std::string& archivo)
+void showArt(const std::string& file)
 {
-    ifstream inFile(archivo);
-        if (!inFile.is_open()) {
-            cerr << "No se pudo abrir el archivo: " << archivo << endl;
-            return;
-        }
+    ifstream inFile(file);
+    if (!inFile.is_open()) {
+        cerr << "Could not open file: " << file << endl;
+        return;
+    }
 
-        string line;
-        while (getline(inFile, line)) {
-            cout << line << endl;
-        }
+    string line;
+    while (getline(inFile, line)) {
+        cout << line << endl;
+    }
 
     inFile.close();
 }
 
-int main(){
+int main() {
     showArt("assets/ECOS-art.txt");
-        cout<< endl << "Presiona ENTER para comenzar tu historia..." << endl;
-        cin.ignore();
+    cout << endl << "Press ENTER to begin your story..." << endl;
+    cin.ignore();
 
-        playGame();
+    playGame();
 
-        cout << endl << "Gracias por jugar...Hasta la proxima" << endl;
-
-
- return 0;
+    return 0;
 }

@@ -4,25 +4,24 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-using namespace std;  
-void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
+using namespace std;
+
+void sleep(int time_seconds) // each action wastes time, if time reaches 0, it's game over
 {
-    time_seconds=450;
-    if (time_seconds >=450)
+    time_seconds = 450;
+    if (time_seconds >= 450)
     {
-        cout<< "Se te acabo el tiempo. El reator ha explotado." << endl;
+        cout << "Time is up. The reactor has exploded." << endl;
         cout << "=====GAME OVER=====" << endl << endl;
         cout << "                                                                        !!!!!AJAJAJAJAJAJAJA" << endl;
-        
     }
-    
 }
 
 int load_Locations(vector<location> &locations, const string &file, player &player)
 {
     ifstream inFile(file);
     if (!inFile.is_open()) {
-        cerr << "Error al abrir archivo: " << file << endl;
+        cerr << "Error opening file: " << file << endl;
         return 1;
     }
     string line;
@@ -40,7 +39,7 @@ int load_Locations(vector<location> &locations, const string &file, player &play
     }
     inFile.close();
 
-    // Ubicación inicial
+    // Initial location
     if (!locations.empty()) {
         player.currentLocation = locations[0].locations;
     }
@@ -51,7 +50,7 @@ int load_Actions(vector<action> &actions, const string &file)
 {
     ifstream inFile(file);
     if (!inFile.is_open()) {
-        cerr << "Error al abrir el archivo: " << file << endl;
+        cerr << "Error opening file: " << file << endl;
         return 1;
     }
 
@@ -71,68 +70,66 @@ int load_Actions(vector<action> &actions, const string &file)
     return 0;
 }
 
-
-void initialize_player(player &player)  //basic features of the player, time, location, goals, etc.
+void initialize_player(player &player) // initial player setup
 {
-    player.time=450;
-    player.currentLocation="Start";
-    player.currentgoal= "Encuentra modulos de memoria";
-    player.memoriesFound={};
-    player.araState="Desactivada";
-    player.finalModuleFound= false;
+    player.time = 450;
+    player.currentLocation = "Incubation room";
+    player.currentgoal = "Find memory modules";
+    player.memoriesFound = {};
+    player.araState = "Deactivated";
+    player.finalModuleFound = false;
 }
-
 
 void show_Scene(const player &player, const vector<location> &locations)
 {
-    cout << "Tiempo restante: " << player.time << endl;
+    cout << "Time remaining: " << player.time << endl;
 
     for (const auto &loc : locations)
     {
         if (loc.locations == player.currentLocation)
         {
-            cout << "Estas en: " << loc.locations << endl;
+            cout << "You are in: " << loc.locations << endl;
             cout << loc.description << endl;
 
             if (loc.isHostile)
             {
-                cout << "Este lugar es hostil... algo se mueve entre las sombras." << endl;
+                cout << "This place is hostile... something moves in the shadows." << endl;
                 showArt("assets/ancient_healer.txt");
 
-                if (player.araState == "Desactivada")
+                if (player.araState == "Deactivated")
                 {
-                    ("assets/anciente_healer.txt");
-                    cout << "\nSin ARA activa, dependes solo de tu instinto..." << endl;
-                    cout << "\n Que haces?"<< endl;
-                    cout << "1. Te escondes detrás de una consola."<<endl;
-                    cout << "2. Enfrentas el ruido con una herramienta que encontraste."<< endl;
+                    showArt("assets/ancient_healer.txt");
+                    cout << "\nWithout ARA active, you rely only on your instincts..." << endl;
+                    cout << "\nWhat do you do?" << endl;
+                    cout << "1. Hide behind a console." << endl;
+                    cout << "2. Face the noise with a tool you found." << endl;
                     string decision;
                     getline(cin, decision);
 
                     if (decision == "1")
                     {
-                        cout << "\nEsperas en silencio mientras una figura monstruosa pasa de largo..." << endl;
-                        cout << "Has sobrevivido... por ahora." << endl;
+                        cout << "\nYou wait silently as a monstrous figure walks past..." << endl;
+                        cout << "You survived... for now." << endl;
                     }
                     else if (decision == "2")
                     {
-                        cout << "\nSaltas hacia la figura, pero eres superado con facilidad..." << endl;
-                        cout << "No logras sobrevivir al encuentro." << endl;
+                        cout << "\nYou jump toward the figure, but you're easily overpowered..." << endl;
+                        cout << "You did not survive the encounter." << endl;
                         cout << "===== GAME OVER =====" << endl;
                         showArt("assets/ascii-art.txt");
                         exit(0);
                     }
                     else
                     {
-                        cout << "\nDudaste demasiado... y eso fue tu final." << endl;
+                        cout << "\nYou hesitated too long... and that was your end." << endl;
                         cout << "===== GAME OVER =====" << endl;
                         showArt("assets/ascii-art.txt");
                         exit(0);
                     }
                 }
                 else
-                 {
-                    cout << "ARA analiza el entorno y activa una defensa automática. Has evitado el peligro." << endl;
+                {
+                    cout << "ARA analyzes the environment and activates an automatic defense. You've avoided danger." << endl;
                 }
             }
 
@@ -140,151 +137,156 @@ void show_Scene(const player &player, const vector<location> &locations)
         }
     }
 
-    cout << "Ubicacion desconocida..." << endl;
+    cout << "Unknown location..." << endl;
 }
 
-
-string handle_Entry() // it reads the decitions that the the player is gonna take throughout the game
+string handle_Entry() // reads the player's input
 {
     string input;
-    cout<< "Que accion vas a tomar?"<< endl;
-    getline(cin,input);
-
-    return string(input);
+    cout << "What action will you take?" << endl;
+    getline(cin, input);
+    return input;
 }
 
-void process_Action(string &entry, player &player, const vector<action> &actions, const vector<location> &locations) 
-{// it simply process the action of the player, it reads if it fits on the ".txt" and show the message that corresponds to the action.
+void process_Action(string &entry, player &player, const vector<action> &actions, const vector<location> &locations)
+{
     bool actionFound = false;
-    for (auto &action :actions)
+    for (auto &action : actions)
     {
-        if (action.sourceLocation== player.currentLocation && action.entry==entry)
+        if (action.sourceLocation == player.currentLocation && action.entry == entry)
         {
-            cout<< action.endMessage << endl;
-            player.currentLocation =  action.destinationLocation;
-            player.time -= 15;
-                if (player.currentLocation == "Laboratorio de experimentos") {
-                string memoria = "Memoria del experimento";
+            cout << action.endMessage << endl;
+            player.currentLocation = action.destinationLocation;
+            player.time -= 45;
+
+            if (player.currentLocation == "Laboratorio de experimentos") {
+                string memoria = "Experiment Memory";
                 discover_memory(player, memoria);
             } else if (player.currentLocation == "Observatorio estelar") {
-                string memoria = "Una mirada al pasado";
+                string memoria = "A Glimpse of the Past";
                 discover_memory(player, memoria);
             } else if (player.currentLocation == "Modulo Final") {
-                string memoria = "Última memoria de Ara";
+                string memoria = "Ara's Final Memory";
                 discover_memory(player, memoria);
             }
 
             show_Scene(player, locations);
-                if (player.time <=0)
-                {
-                    cout << "Tu tiempo se agoto... el reactor ha explotado. Tu mision fue un fracaso." << endl;
-                }
-                    actionFound= true;
-                    break;
-            return;    
+            if (player.time <= 0)
+            {
+                cout << "Your time has run out... the reactor exploded. Your mission was a failure." << endl;
+            }
+            actionFound = true;
+            break;
         }
-         
-        
     }
-   
 }
-bool verify_EndConditions(const player &player) //checks the conditions of the players and based them on a final of the game.
+
+bool verify_EndConditions(const player &player)
 {
     return player.memoriesFound.size() >= 3 && player.time > 0;
 }
 
-void discover_memory(player&player, string & memory) // just shows the update of the account of modules of memories that the player has, and it tells to the player every time it found a module.
+void discover_memory(player &player, string &memory)
 {
     player.memoriesFound.push_back(memory);
-    cout << "Has encontrado un modulo de memoria: " << memory << endl;
+    cout << "You have found a memory module: " << memory << endl;
 }
 
-void interact_with_Ara(player &player) // it checks the state of ARA and its messages.
+void interact_with_Ara(player &player)
 {
-if(player.araState=="Desactivada")
-{
-    cout<< " ARA esta siendo activada..." << endl;
-    player.araState= "Activa";
-    cout << "ARA: Hola, " << player.currentLocation << " parece interesante. Dejame acompanarte en adelante." << endl;
-    }   else if (player.araState=="Activa")
+    if (player.araState == "Deactivated")
     {
-        cout << "ARA: Recuerda que tu objetivo actual es: " << player.currentgoal << endl;
+        cout << "ARA is being activated..." << endl;
+        player.araState = "Active";
+        cout << "ARA: Hello, " << player.currentLocation << " looks interesting. Let me accompany you from now on." << endl;
     }
-
+    else if (player.araState == "Active")
+    {
+        cout << "ARA: Remember, your current goal is: " << player.currentgoal << endl;
+    }
 }
-void handle_final_choice(player &player) // based a final cout depending on the player's decition and shows a fragment of the final it chosed
+
+void handle_final_choice(player &player)
 {
-    cout<< "Has llegado al final, has conseguido todos los modulos de memoria...Ahora debes tomar una desicion." << endl;
-    cout<< "1. Sacrificarte para salvar la nave" << endl;
-    cout << "2.Fucionarte con ARA, descubrir la verdad de todo tu origen." << endl;
-    cout << "3.Desconectarte y escapar." << endl;
+    cout << "You've reached the end, you've gathered all memory modules... Now you must make a decision." << endl;
+    cout << "1. Sacrifice yourself to save the ship." << endl;
+    cout << "2. Merge with ARA and uncover the truth of your origin." << endl;
+    cout << "3. Disconnect and escape." << endl;
     string choice;
     getline(cin, choice);
 
-        if (choice=="1")
-        {
-            player.finalModuleFound=true;
-            cout<< "Te sacrificaste heroicamente... la nave ha sido salvada de su fatidica destruccion. Mueres, pero dejas un mensaje en la red: No somos solo lineas de codigo. Somos... algo mas. Controlen sus acciones... o se atendran a las consecuencias." << endl;
-            }else if (choice== "2")
-            {
-                player.finalModuleFound=true;
-                cout << "Al fusionarte con ARA descubres que tu eres la mente principal del experimento, ARA es una copia de tu conciencia original y fue quien causo el accidente para evitar que te borraran debido al fallo del experimento, luego de esto... desmayas. Despiertas en un cuerpo mejorado con los recuerdos de ambos y escapas justo antes del colapso. Queda la duda de si eres tu o ARA. " << endl;
-                showArt("assets/fusion.txt");
-                }else if (choice== "3")
-                {
-                    player.finalModuleFound=true;
-                    cout <<"Escapas, pero con fragmentos de memoria vacíos, preguntandote qué olvidaste. ARA desaparece, aunque a veces escuchas su voz en tu cabeza" << endl;
-                    }else
-                    {
-                        cout << "Eleccion invalida... el destino decidira por ti..."<< endl;
-                        player.finalModuleFound=true;
-                    }  
-}
-void show_final_ending(const player player) // couts(texts) for the different endings onf the game.
-{
- if (player.time <=0)
- {
-    cout << "Tu tiempo se ha agotado. No pudiste evitar la explosion... muchas vidas y conocimiento se han perdido." << endl;
-    cout << player.currentgoal << "Ha sido un fracaso!!" << endl;
-    } else if (player.memoriesFound.size() >= 3)
+    if (choice == "1")
     {
-        cout << "Recuperaste tus recuerdos y el objetivo fue comletado... " << endl;
-        cout << "Mision Completada" << endl;
-        } else
-        {
-            cout << " Sobreviviste, pero perdiste gran parte de ti en el camino..." << endl;
-        }
+        player.finalModuleFound = true;
+        cout << "You sacrificed yourself heroically... the ship was saved from its doomed destruction. You die, but leave a message in the system: We are not just lines of code. We are... something more. Control your actions... or face the consequences." << endl;
+    }
+    else if (choice == "2")
+    {
+        player.finalModuleFound = true;
+        cout << "By merging with ARA, you discover that you are the original mind behind the experiment. ARA is a copy of your consciousness and caused the accident to prevent your deletion. You faint... then awaken in an enhanced body with memories of both. You escape just before the collapse. A doubt remains: are you still you or ARA?" << endl;
+        showArt("assets/fusion.txt");
+    }
+    else if (choice == "3")
+    {
+        player.finalModuleFound = true;
+        cout << "You escape, but with fragmented memories, wondering what you've forgotten. ARA disappears, though sometimes you hear her voice in your mind." << endl;
+    }
+    else
+    {
+        cout << "Invalid choice... fate will decide for you..." << endl;
+        player.finalModuleFound = true;
+    }
 }
-void final_game() // final message after complete the game( any ending)
+
+void show_final_ending(const player player)
 {
-    cout << "    LLegaste al modulo final    " << endl;
-    cout << "Felicidades por completar el juego." << endl;
+    if (player.time <= 0)
+    {
+        cout << "Your time is up. You couldn’t prevent the explosion... many lives and knowledge were lost." << endl;
+        cout << player.currentgoal << " was a failure!!" << endl;
+    }
+    else if (player.memoriesFound.size() >= 3)
+    {
+        cout << "You recovered your memories and completed the objective..." << endl;
+        cout << "Mission Completed" << endl;
+    }
+    else
+    {
+        cout << "You survived, but lost much of yourself along the way..." << endl;
+    }
 }
-void show_credits() // credits of the developers of this game.
+
+void final_game()
+{
+    cout << "    You've reached the final module    " << endl;
+    cout << "Congratulations on completing the game." << endl;
+}
+
+void show_credits()
 {
     cout << endl;
     cout << "==================================================" << endl;
-    cout << "                  C R E D I T O S                " << endl;
+    cout << "                      C R E D I T S              " << endl;
     cout << "==================================================" << endl;
     cout << endl;
 
-    cout << " - Nombre del juego:        ECOS" << endl;
-    cout << " - Historia:                JULIO PARADA" << endl;
-    cout << " - Programacion:            RAMones" << endl;
-    cout << " - Arte ASCII:              ALEJANDRO AYALA, WILMER CABEZAS  y ASCIIFLOW" << endl;
-    cout << " - Motor de juego:          Consola C++ personalizada" << endl;
-    cout << " - Herramientas:            Visual Studio Code / g++" << endl;
-    cout << " - Pruebas y QA:            Visual Studio Code" << endl;
-    cout << " - Inspiracion:             Warframe, SOMA, Dead Space y Undertale." << endl;
+    cout << " - Game Name:            ECOS" << endl;
+    cout << " - Story:                JULIO PARADA" << endl;
+    cout << " - Programming:          RAMones" << endl;
+    cout << " - ASCII Art:            ALEJANDRO AYALA, WILMER CABEZAS & ASCIIFLOW" << endl;
+    cout << " - Game Engine:          Custom C++ Console Engine" << endl;
+    cout << " - Tools:                Visual Studio Code / g++" << endl;
+    cout << " - Testing & QA:         Visual Studio Code" << endl;
+    cout << " - Inspiration:          Warframe, SOMA, Dead Space, and Undertale" << endl;
     cout << endl;
 
-    cout << " - Licencia y derechos:" << endl;
-    cout << " - Este juego es un proyecto personal y no tiene fines comerciales." << endl;
-    cout << " - Todos los derechos de referencias e inspiración pertenecen a sus creadores originales." << endl;
+    cout << " - License and Rights:" << endl;
+    cout << " - This game is a personal project and not for commercial use." << endl;
+    cout << " - All inspiration and references belong to their original creators." << endl;
     cout << endl;
 
     cout << "==================================================" << endl;
-    cout << "           Gracias por jugar! Hasta pronto.     " << endl;
+    cout << "        Thank you for playing! See you soon.      " << endl;
     cout << "==================================================" << endl;
     cout << endl;
 }
