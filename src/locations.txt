@@ -1,0 +1,10 @@
+Start|Te despiertas en una sala iluminada solo por luces de emergencia.|0
+Pasillo oscuro|Un pasillo largo, oscuro y silencioso.|0
+Laboratorio tetrico|Instrumentos rotos y manchas oscuras por todas partes.|0
+Sala oscura| Es una criatura! Estas en peligro!.|1
+Cuarto de control|Una pequena sala con pantallas apagadas.|0
+Laboratorio de experimentos|Ecos de antiguos experimentos.|0
+Observatorio estelar|Estrellas visibles a traves de un domo quebrado.|0
+Pasillo estrellado|Mientras caminas, las estrellas que observas se vuelven cada vez mas hermosas.|0
+Observatorio abandonado|Aunque el pasar de los años es notable en la estructura del edifico, es innegable que desprende un aura de misterio....|0
+Modulo Final|Has llegado al modulo final.|0

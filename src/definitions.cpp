@@ -1,13 +1,10 @@
-
 #include "header.h"
 #include <string>
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <sstream>
-using namespace std;
-
-  
+using namespace std;  
 void sleep(int time_seconds) //this works for the time, every action that the player does, it waste time, if the time reachs 0, the game is over.
 {
     time_seconds=450;
@@ -23,12 +20,12 @@ void sleep(int time_seconds) //this works for the time, every action that the pl
 
 int load_Locations(vector<location> &locations, const string &file, player &player)
 {
-     ifstream inFile(file);
+    ifstream inFile(file);
     if (!inFile.is_open()) {
         cerr << "Error al abrir archivo: " << file << endl;
         return 1;
     }
-         string line;
+    string line;
     while (getline(inFile, line)) {
         stringstream ss(line);
         location loc;
@@ -41,23 +38,21 @@ int load_Locations(vector<location> &locations, const string &file, player &play
 
         locations.push_back(loc);
     }
-
     inFile.close();
 
     // Ubicación inicial
     if (!locations.empty()) {
         player.currentLocation = locations[0].locations;
     }
-
     return 0;
 }
 
 int load_Actions(vector<action> &actions, const string &file)
 {
-     ifstream inFile(file); // open file
+    ifstream inFile(file);
     if (!inFile.is_open()) {
         cerr << "Error al abrir el archivo: " << file << endl;
-        return 1; // error code
+        return 1;
     }
 
     string line;
@@ -65,17 +60,17 @@ int load_Actions(vector<action> &actions, const string &file)
         stringstream ss(line);
         action act;
 
-        getline(ss, act.sourceLocation, '|');     
-        getline(ss, act.entry, '|');               
-        getline(ss, act.destinationLocation, '|'); 
-        getline(ss, act.endMessage, '|');          
+        getline(ss, act.sourceLocation, '|');
+        getline(ss, act.entry, '|');
+        getline(ss, act.destinationLocation, '|');
+        getline(ss, act.endMessage, '|');
 
-        actions.push_back(act);                  
+        actions.push_back(act);
     }
-
     inFile.close();
-return 0;
+    return 0;
 }
+
 
 void initialize_player(player &player)  //basic features of the player, time, location, goals, etc.
 {
@@ -102,6 +97,7 @@ void show_Scene(const player &player, const vector<location> &locations)
             if (loc.isHostile)
             {
                 cout << "Este lugar es hostil... algo se mueve entre las sombras." << endl;
+                showArt("assets/ancient_healer.txt");
 
                 if (player.araState == "Desactivada")
                 {
@@ -187,14 +183,10 @@ void process_Action(string &entry, player &player, const vector<action> &actions
                     break;
             return;    
         }
-        if (!actionFound)
-        {
-            cout << "No puedes hacer eso aqui..." << endl;
-            player.time -= 20;
-        }
+         
         
     }
-    cout << "No se puede hacer eso aqui. Intenta otra vez." << endl;
+   
 }
 bool verify_EndConditions(const player &player) //checks the conditions of the players and based them on a final of the game.
 {
@@ -213,7 +205,7 @@ if(player.araState=="Desactivada")
 {
     cout<< " ARA esta siendo activada..." << endl;
     player.araState= "Activa";
-    cout << "ARA: Hola, " << player.currentLocation << "parece interesante. Dejame acompanarte en adelante." << endl;
+    cout << "ARA: Hola, " << player.currentLocation << " parece interesante. Dejame acompanarte en adelante." << endl;
     }   else if (player.araState=="Activa")
     {
         cout << "ARA: Recuerda que tu objetivo actual es: " << player.currentgoal << endl;
@@ -232,15 +224,16 @@ void handle_final_choice(player &player) // based a final cout depending on the 
         if (choice=="1")
         {
             player.finalModuleFound=true;
-            cout<< "Te sacrificaste heroicamente... la nave ha sido salvada de su fatidica destruccion. Mueres, pero dejas un mensaje en la red: No somos solo líneas de código. Somos... algo más. Controlen sus acciones... o se atendran a las consecuencias." << endl;
+            cout<< "Te sacrificaste heroicamente... la nave ha sido salvada de su fatidica destruccion. Mueres, pero dejas un mensaje en la red: No somos solo lineas de codigo. Somos... algo mas. Controlen sus acciones... o se atendran a las consecuencias." << endl;
             }else if (choice== "2")
             {
                 player.finalModuleFound=true;
-                cout << "Al fusionarte con ARA descubres que tu eres la mente principal del experimento, ARA es una copia de tu conciencia original y fue quien causó el accidente para evitar que te borraran debido al fallo del experimento, luego de esto... desmayas. Despiertas en un cuerpo mejorado con los recuerdos de ambos y escapas justo antes del colapso. Queda la duda de si eres tú o ARA. " << endl;
+                cout << "Al fusionarte con ARA descubres que tu eres la mente principal del experimento, ARA es una copia de tu conciencia original y fue quien causo el accidente para evitar que te borraran debido al fallo del experimento, luego de esto... desmayas. Despiertas en un cuerpo mejorado con los recuerdos de ambos y escapas justo antes del colapso. Queda la duda de si eres tu o ARA. " << endl;
+                showArt("assets/fusion.txt");
                 }else if (choice== "3")
                 {
                     player.finalModuleFound=true;
-                    cout <<"Escapas, pero con fragmentos de memoria vacíos, preguntándote qué olvidaste. ARA desaparece, aunque a veces escuchas su voz en tu cabeza" << endl;
+                    cout <<"Escapas, pero con fragmentos de memoria vacíos, preguntandote qué olvidaste. ARA desaparece, aunque a veces escuchas su voz en tu cabeza" << endl;
                     }else
                     {
                         cout << "Eleccion invalida... el destino decidira por ti..."<< endl;
@@ -271,27 +264,27 @@ void show_credits() // credits of the developers of this game.
 {
     cout << endl;
     cout << "==================================================" << endl;
-    cout << "                  C R É D I T O S                " << endl;
+    cout << "                  C R E D I T O S                " << endl;
     cout << "==================================================" << endl;
     cout << endl;
 
-    cout << " ▸ Nombre del juego:        ECOS" << endl;
-    cout << " ▸ Historia:                JULIO PARADA" << endl;
-    cout << " ▸ Programación:            RAMones" << endl;
-    cout << " ▸ Arte ASCII:              ALEJANDRO AYALA, WILMER CABEZAS  y ASCIIFLOW" << endl;
-    cout << " ▸ Motor de juego:          Consola C++ personalizada" << endl;
-    cout << " ▸ Herramientas:            Visual Studio Code / g++" << endl;
-    cout << " ▸ Pruebas y QA:            Visual Studio Code" << endl;
-    cout << " ▸ Inspiración:             Warframe, SOMA, Dead Space y Undertale." << endl;
+    cout << " - Nombre del juego:        ECOS" << endl;
+    cout << " - Historia:                JULIO PARADA" << endl;
+    cout << " - Programacion:            RAMones" << endl;
+    cout << " - Arte ASCII:              ALEJANDRO AYALA, WILMER CABEZAS  y ASCIIFLOW" << endl;
+    cout << " - Motor de juego:          Consola C++ personalizada" << endl;
+    cout << " - Herramientas:            Visual Studio Code / g++" << endl;
+    cout << " - Pruebas y QA:            Visual Studio Code" << endl;
+    cout << " - Inspiracion:             Warframe, SOMA, Dead Space y Undertale." << endl;
     cout << endl;
 
-    cout << " ▸ Licencia y derechos:" << endl;
-    cout << "   Este juego es un proyecto personal y no tiene fines comerciales." << endl;
-    cout << "   Todos los derechos de referencias e inspiración pertenecen a sus creadores originales." << endl;
+    cout << " - Licencia y derechos:" << endl;
+    cout << " - Este juego es un proyecto personal y no tiene fines comerciales." << endl;
+    cout << " - Todos los derechos de referencias e inspiración pertenecen a sus creadores originales." << endl;
     cout << endl;
 
     cout << "==================================================" << endl;
-    cout << "           ¡Gracias por jugar! Hasta pronto.     " << endl;
+    cout << "           Gracias por jugar! Hasta pronto.     " << endl;
     cout << "==================================================" << endl;
     cout << endl;
 }

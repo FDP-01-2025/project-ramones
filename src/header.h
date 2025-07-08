@@ -33,7 +33,7 @@ string entry;                      //the exact command the player must type.
 string destinationLocation;        
 string endMessage;                
 };
-
+void showAndChooseAction(vector<action>& actions, player& player, const vector<location>& locations);
 void playGame();                        //the main function that orchestrates the entire game loop.
 void sleep(int time_seconds);                            //pauses the execution of the program for a specified time.
 int load_Locations(vector<location>& locations, const string& file, player& player);                //read location data
