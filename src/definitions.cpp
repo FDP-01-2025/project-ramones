@@ -159,13 +159,13 @@ void process_Action(string &entry, player &player, const vector<action> &actions
             player.currentLocation = action.destinationLocation;
             player.time -= 45;
 
-            if (player.currentLocation == "Laboratorio de experimentos") {
+            if (player.currentLocation == "Experiment lab") {
                 string memoria = "Experiment Memory";
                 discover_memory(player, memoria);
-            } else if (player.currentLocation == "Observatorio estelar") {
+            } else if (player.currentLocation == "Star observatory") {
                 string memoria = "A Glimpse of the Past";
                 discover_memory(player, memoria);
-            } else if (player.currentLocation == "Modulo Final") {
+            } else if (player.currentLocation == "Final module") {
                 string memoria = "Ara's Final Memory";
                 discover_memory(player, memoria);
             }
@@ -258,7 +258,7 @@ void show_final_ending(const player player)
 
 void final_game()
 {
-    cout << "    You've reached the final module    " << endl;
+    cout << "    You've reached the Final module    " << endl;
     cout << "Congratulations on completing the game." << endl;
 }
 
