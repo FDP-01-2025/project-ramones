@@ -1,11 +1,11 @@
-Incubation room|advance|Dark hallway|You proceed cautiously through the hallway.
-Dark hallway|open rusty door|Creepy lab|You force the door... the lab is in chaos.
-Dark hallway|enter side room|Control room|You enter a small control room.
-Control room|go back|Dark hallway|You return to the dark hallway.
-Creepy lab|look around|Creepy lab|You see broken instruments and dark stains. Something moves.
-Creepy lab|scream|Creepy lab|Your scream echoes... and something answers from the darkness.
-Creepy lab|hide|Creepy lab|You crouch behind a shattered console.
-Creepy lab|face creature|Creepy lab|You grab a rusty tool and prepare... for what?
-Control room|advance|Experiment lab|You follow the hallway leading to the main lab.
-Experiment lab|continue|Star observatory|You find a side access door.
-Star observatory|go upstairs|Final module|You climb with determination. You’ve reached the final destination.
+Cuarto incubatorio|avanzar|Pasillo oscuro|Avanzas con cautela por el pasillo.
+Pasillo oscuro|abrir puerta oxidada|Laboratorio tétrico|Fuerzas la puerta... el laboratorio está hecho un caos.
+Pasillo oscuro|entrar al cuarto lateral|Cuarto de control|Entras a una pequeña sala de control.
+Cuarto de control|volver|Pasillo oscuro|Regresas al pasillo oscuro.
+Laboratorio tétrico|mirar alrededor|Laboratorio tétrico|Ves instrumentos rotos y manchas oscuras. Algo se mueve.
+Laboratorio tétrico|gritar|Laboratorio tétrico|Tu grito resuena... y algo te responde desde la oscuridad.
+Laboratorio tétrico|esconderse|Laboratorio tétrico|Te agachas detrás de una consola destrozada.
+Laboratorio tétrico|enfrentar criatura|Laboratorio tétrico|Empuñas una herramienta oxidada y te preparas... ¿para qué?
+Cuarto de control|avanzar|Laboratorio de experimentos|Sigues el pasillo que conecta con el laboratorio principal.
+Laboratorio de experimentos|continuar|Observatorio estelar|Encuentras una puerta de acceso lateral.
+Observatorio estelar|subir escaleras|Modulo Final|Subes con decision. Llegaste al destino final.

@@ -87,3 +87,17 @@ Imagenes preliminares del juego
 1. Clona este repositorio en tu máquina local:
    ```bash
    git clone [https://github.com/FDP-01-2025/project-ramones]
+2. Si deseas compilar el juego desde VS Code, sigue estos pasos:
+Una vez clonado el reporsitorio y abierto VS Code:
+      1. Abre la terminal (Ctrl+ ` o desde la opcion Vista -> Terminal)
+      2. Estando dentro de la terminal escribes lo siguiente: 
+               - Primero: cd .\src\ 
+               - Seguido de: g++ main.cpp gameDefinition.cpp definitions.cpp -o ecos
+               - Por Ultimo: .\ecos.exe
+               - Luego extiende toda la terminal si gustas para mejor experiencia.
+3. Si lo corres por medio de CMD, haz lo que se pide a continuacion:
+               -Primero abre el cmd
+               -Segundo una vez que ya esté abierto, tenés que escribir el comando "cd" 
+               -A continuación te vas a la carpeta "src" dónde están todos nuestro códigos y copias la ruta de la carpeta, nada más es darle click arriba en el apartado donde aparece las rutas y las carpetas que abriste, le das click derecho, copiar dirección y le das enter.
+               -Cuando le des enter, el cmd ya se encontrará en la carpeta del juego, y escribís el siguiente código . (El punto es importante) : .\ecos.exe
+               -"ecos.exe" es nuestro ejecutable y una vez que escrito ese comando, damos enter y el cmd ejecutará el juego.
