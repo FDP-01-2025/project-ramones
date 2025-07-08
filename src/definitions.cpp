@@ -159,13 +159,13 @@ void process_Action(string &entry, player &player, const vector<action> &actions
             player.currentLocation = action.destinationLocation;
             player.time -= 45;
 
-            if (player.currentLocation == "Laboratorio de experimentos") {
+            if (player.currentLocation == "Experiments lab") {
                 string memoria = "Experiment Memory";
                 discover_memory(player, memoria);
-            } else if (player.currentLocation == "Observatorio estelar") {
+            } else if (player.currentLocation == "Star Observatory") {
                 string memoria = "A Glimpse of the Past";
                 discover_memory(player, memoria);
-            } else if (player.currentLocation == "Modulo Final") {
+            } else if (player.currentLocation == "Final module") {
                 string memoria = "Ara's Final Memory";
                 discover_memory(player, memoria);
             }
